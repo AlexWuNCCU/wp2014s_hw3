@@ -1,79 +1,190 @@
 <!DOCTYPE html>
-<html>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Wp2014s hw3 : " />
+<html lang="en">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    <title>Wp2014s hw3</title>
-  </head>
+  <title>Peer Evaluation App | Web Programming HW3</title>
+  <!-- Bootstrap -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn"t work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 
-  <body>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button"><span class="sr-only">Peer
+        Evaluation App</span>
+        </button> <a class="navbar-brand" href="#">Peer
+        Evaluation App</a>
+      </div>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/AlexWuNCCU/wp2014s_hw3">View on GitHub</a>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li id="loginButton"><a href="#login/">Login</a>
+          </li>
 
-          <h1 id="project_title">Wp2014s hw3</h1>
-          <h2 id="project_tagline"></h2>
+          <li id="evaluationButton"><a href="#peer-evaluation/">Peer
+          Evaluation</a>
+          </li>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/AlexWuNCCU/wp2014s_hw3/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/AlexWuNCCU/wp2014s_hw3/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+          <li id="logoutButton"><a href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
     </div>
+  </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
+  <div class="container" id="content"></div>
+  <script id="loginView" type="text/x-dot-template">
+    <div class="starter-template">
+      <br />
+      <form role="form" class="form-signin" id="form-signin">
+        <h3 class="form-signin-heading">Please sign in</h3>
+        <div class="alert alert-danger" id="form-signin-message" style="display: none"></div>
+        <input type="text" autofocus="" required="" placeholder="Your student ID" class="form-control first-component" id="form-signin-student-id">
+        <input type="password" required="" placeholder="Password" class="form-control last-component" id="form-signin-password">
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+      </form>
+      <hr />
+      <form role="form" class="form-signin" id="form-signup">
+        <h3 class="form-signin-heading">or create a new account</h3>
+        <div class="alert alert-danger" id="form-signup-message" style="display: none"></div>
+        <input type="text" required="" placeholder="Your student ID" class="form-control first-component" id="form-signup-student-id">
+        <input type="password" required="" placeholder="Password" class="form-control middle-component" id="form-signup-password">
+        <input type="password" required="" placeholder="Confirm Password" class="form-control middle-component" id="form-signup-password1">
+        <input type="email" autofocus="" required="" placeholder="Email address" class="form-control last-component" id="form-signup-email">
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Sign up</button>
+      </form>
     </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Wp2014s hw3 maintained by <a href="https://github.com/AlexWuNCCU">AlexWuNCCU</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+    </script>
+    <script id="evaluationView" type="text/x-dot-template">
+      <div class="row">
+        <br />
+        <form id="evaluationForm">
+        <div class="col-md-12">
+          {{~it :member:index}}
+          <div>
+            <h2>{{=member.name}}</h2>
+            <ol>
+              <li>
+                <h3>Cooperation</h3>
+                <select class="form-control" required id="stu{{=member.StudentId}}-q0">
+                  <option value=""{{? member.scores[0] === "0"}} selected{{?}}>---</option>
+                  <option value="1"{{? member.scores[0] === "1"}} selected{{?}}>
+                    1 = did not perform in this manner at all
+                  </option>
+                  <option value="2"{{? member.scores[0] === "2"}} selected{{?}}>
+                    2 = low performance in this area
+                  </option>
+                  <option value="3"{{? member.scores[0] === "3"}} selected{{?}}>
+                    3 = did okay in this area, but could have contributed more to the group
+                  </option>
+                  <option value="4"{{? member.scores[0] === "4"}} selected{{?}}>
+                    4 = contributed enough to be considered an active part of the group
+                  </option>
+                  <option value="5"{{? member.scores[0] === "5"}} selected{{?}}>
+                    5 = performed great as an integral, vital part of the group in this area
+                  </option>
+                </select>
+              </li>
+              <li>
+                <h3>Participation</h3>
+                <select class="form-control" required id="stu{{=member.StudentId}}-q1">
+                  <option value=""{{? member.scores[1] === "0"}} selected{{?}}>---</option>
+                  <option value="1"{{? member.scores[1] === "1"}} selected{{?}}>
+                    1 = did not perform in this manner at all
+                  </option>
+                  <option value="2"{{? member.scores[1] === "2"}} selected{{?}}>
+                    2 = low performance in this area
+                  </option>
+                  <option value="3"{{? member.scores[1] === "3"}} selected{{?}}>
+                    3 = did okay in this area, but could have contributed more to the group
+                  </option>
+                  <option value="4"{{? member.scores[1] === "4"}} selected{{?}}>
+                    4 = contributed enough to be considered an active part of the group
+                  </option>
+                  <option value="5"{{? member.scores[1] === "5"}} selected{{?}}>
+                    5 = performed great as an integral, vital part of the group in this area
+                  </option>
+                </select>
+              </li>
+              <li>
+                <h3>Quality of work</h3>
+                <select class="form-control" required id="stu{{=member.StudentId}}-q2">
+                  <option value=""{{? member.scores[2] === "0"}} selected{{?}}>---</option>
+                  <option value="1"{{? member.scores[2] === "1"}} selected{{?}}>
+                    1 = did not perform in this manner at all
+                  </option>
+                  <option value="2"{{? member.scores[2] === "2"}} selected{{?}}>
+                    2 = low performance in this area
+                  </option>
+                  <option value="3"{{? member.scores[2] === "3"}} selected{{?}}>
+                    3 = did okay in this area, but could have contributed more to the group
+                  </option>
+                  <option value="4"{{? member.scores[2] === "4"}} selected{{?}}>
+                    4 = contributed enough to be considered an active part of the group
+                  </option>
+                  <option value="5"{{? member.scores[2] === "5"}} selected{{?}}>
+                    5 = performed great as an integral, vital part of the group in this area
+                  </option>
+                </select>
+              </li>
+              <li>
+                <h3>Contribution of the overall group</h3>
+                <select class="form-control" required id="stu{{=member.StudentId}}-q3">
+                  <option value=""{{? member.scores[3] === "0"}} selected{{?}}>---</option>
+                  <option value="1"{{? member.scores[3] === "1"}} selected{{?}}>
+                    1 = did not perform in this manner at all
+                  </option>
+                  <option value="2"{{? member.scores[3] === "2"}} selected{{?}}>
+                    2 = low performance in this area
+                  </option>
+                  <option value="3"{{? member.scores[3] === "3"}} selected{{?}}>
+                    3 = did okay in this area, but could have contributed more to the group
+                  </option>
+                  <option value="4"{{? member.scores[3] === "4"}} selected{{?}}>
+                    4 = contributed enough to be considered an active part of the group
+                  </option>
+                  <option value="5"{{? member.scores[3] === "5"}} selected{{?}}>
+                    5 = performed great as an integral, vital part of the group in this area
+                  </option>
+                </select>
+              </li>
+            </ol>
+          </div>
+          {{~}}
+        </div>
+        <center>
+          <input type="submit" class="btn-primary btn-lg btn" id="evaluationForm-submit">
+        </center>
+        </form>
+      </div>
+      </script>
+      <script id="updateSuccessView" type="text/x-dot-template">
+        <div class="starter-template">
+          您的提交已送出，請記得登出系統。<br />謝謝您的使用。
+        </div>
+      </script>
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+      <script src="https://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+      <script src="./js/vendors/doT.min.js"></script>
+      <script src="./js/ta_help.js" type="text/javascript"></script>
+      <script src="./js/app.js" type="text/javascript"></script>
+</body>
 </html>
+
